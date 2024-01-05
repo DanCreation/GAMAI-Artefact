@@ -15,8 +15,8 @@ public class AIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = agent.transform.position;
-        counter = 0;
+        //startPosition = agent.transform.position;
+        //counter = 0;
     }
 
     // Update is called once per frame
