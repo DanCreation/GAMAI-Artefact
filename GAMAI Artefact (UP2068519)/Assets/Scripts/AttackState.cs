@@ -17,12 +17,13 @@ public class AttackState : AIBaseState
         agent.SetDestination(playerPosition);
     }
 
-    public override void OnCollisionEnter(StateManager AI)
+    public override void OnCollisionEnter(StateManager AI, Collision collision, GameObject enemy)
     {
-        if (AI.gameObject.CompareTag("Player"))
+        GameObject obj = collision.gameObject;
+        if (obj.gameObject.CompareTag("Player"))
         {
-            AI.SwitchState(AI.patrolState);
-            
+            enemy.GetComponent<FieldOfView>().seePlayer = false;
+            AI.Start();
         }
     }
 }

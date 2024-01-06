@@ -68,7 +68,8 @@ public class FieldOfView : MonoBehaviour
         foreach(Transform target in visibleTargets)
         {
             percept.AddMemory(target.gameObject);
-            playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            //seePlayer = true;
+            playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position; // I added this line
         }
     }
 

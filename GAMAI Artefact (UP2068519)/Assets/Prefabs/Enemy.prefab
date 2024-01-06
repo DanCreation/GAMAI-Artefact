@@ -216,8 +216,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {x: 0, y: 0, z: 0}
   seePlayer: 0
-  patrol: {fileID: 0}
-  agent: {fileID: 0}
   viewRadius: 15
   viewAngle: 70
   targetLayer:
@@ -258,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8af4b25aaaf5dc48ada1e3a520c3b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 8383023300284323928}
   agent: {fileID: 882015207}
   destinations:
   - {fileID: 0}

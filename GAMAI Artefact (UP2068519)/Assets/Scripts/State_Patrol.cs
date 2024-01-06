@@ -38,7 +38,7 @@ public class State_Patrol : AIBaseState
         }
     }
 
-    public override void OnCollisionEnter(StateManager AI)
+    public override void OnCollisionEnter(StateManager AI, Collision collision, GameObject enemy)
     {
 
     }

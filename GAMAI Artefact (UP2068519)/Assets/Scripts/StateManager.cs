@@ -9,18 +9,26 @@ public class StateManager : MonoBehaviour
     public State_Patrol patrolState = new State_Patrol();
     public AttackState attackState = new AttackState();
 
-    GameObject enemy;
+    public GameObject enemy;
     
     public NavMeshAgent agent;
     public GameObject[] destinations;
     Vector3 playerPosition;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         currentState = patrolState;
         currentState.EnterState(this);
+    }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        currentState.OnCollisionEnter(this, collision, enemy);
+        //currentState = patrolState;
+        //enemy.GetComponent<FieldOfView>().seePlayer = false;
+        //currentState.EnterState(this);
     }
 
     // Update is called once per frame
