@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class PatrolState : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    //public NavMeshAgent agent;
     public GameObject[] destinations;
     int counter;
 
@@ -15,7 +15,24 @@ public class PatrolState : MonoBehaviour
         Debug.Log("Patrol State");
     }
 
-    public void Update()
+    //public void /*Update*/()
+    //{
+    //    for (int i = 0; i < destinations.Length; i++)
+    //    {
+    //        agent.SetDestination(destinations[counter].transform.position);
+    //        if (Vector3.Distance(agent.transform.position, destinations[counter].transform.position) <= 2.0f)
+    //        {
+    //            counter++;
+    //            if (counter >= destinations.Length)
+    //            {
+    //                counter = 0;
+    //                i = 0;
+    //            }
+    //        }
+    //    }
+    //}
+
+    public void Patrol(NavMeshAgent agent)
     {
         for (int i = 0; i < destinations.Length; i++)
         {

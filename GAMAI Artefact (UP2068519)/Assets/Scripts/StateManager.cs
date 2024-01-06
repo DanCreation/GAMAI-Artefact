@@ -5,24 +5,35 @@ using UnityEngine.AI;
 
 public class StateManager : MonoBehaviour
 {
-    public AIBaseState currentState;
-    PatrolState patrol;
+    AIBaseState currentState;
+    public State_Patrol patrolState = new State_Patrol();
+    public AttackState attackState = new AttackState();
+
+    GameObject enemy;
+    
+    public NavMeshAgent agent;
+    public GameObject[] destinations;
+    Vector3 playerPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        currentState = patrolState;
+        currentState.EnterState(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        patrol.Update();
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        currentState.UpdateState(this, agent, destinations, playerPosition, enemy.GetComponent<FieldOfView>().seePlayer);
     }
 
-    //public void SwitchState(AIBaseState AI)
-    //{
-    //    currentState = AI;
-    //    AI.EnterState(this);
-    //}
+    public void SwitchState(AIBaseState state)
+    {
+        currentState = state;
+        state.EnterState(this);
+    }
+
 }
