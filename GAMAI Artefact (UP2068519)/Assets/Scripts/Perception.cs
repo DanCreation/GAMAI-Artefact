@@ -17,12 +17,13 @@ public class Perception : MonoBehaviour
         foreach(KeyValuePair<GameObject, MemoryRecord> Memory in MemoryMap)
         {
             Memory.Value.WithinFoV = false;
+            Memory.Value.WithinFoH = false;
         }
     }
 
     public void AddMemory(GameObject Target)
     {
-        MemoryRecord record = new MemoryRecord(DateTime.Now, Target.transform.position, true);
+        MemoryRecord record = new MemoryRecord(DateTime.Now, Target.transform.position, true, true);
 
         if(MemoryMap.ContainsKey(Target))
         {
@@ -58,6 +59,9 @@ public class MemoryRecord
     [SerializeField]
     public bool WithinFoV;
 
+    [SerializeField] ////////////
+    public bool WithinFoH; // I added these lines
+
     [SerializeField]
     public string TimeLastSensedStr;
 
@@ -66,13 +70,15 @@ public class MemoryRecord
         TimeLastSensed = DateTime.MinValue;
         LastSensedPosition = Vector3.zero;
         WithinFoV = false;
+        WithinFoH = false;
     }
 
-    public MemoryRecord(DateTime Time, Vector3 Pos, bool FoV)
+    public MemoryRecord(DateTime Time, Vector3 Pos, bool FoV, bool FoH)
     {
         TimeLastSensed = Time;
         LastSensedPosition = Pos;
         WithinFoV = FoV;
+        WithinFoH = FoH; // I added this line
         TimeLastSensedStr = Time.ToLongTimeString();
     }
 }

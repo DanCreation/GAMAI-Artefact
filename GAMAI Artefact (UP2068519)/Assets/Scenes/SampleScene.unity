@@ -3245,6 +3245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 985480614}
   speed: 10
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &985480620
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6738,6 +6739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2139760300}
     m_Modifications:
+    - target: {fileID: 882015209, guid: 003d429f3b8620245ab9744a00e370b6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 985480614}
     - target: {fileID: 2473885349570276554, guid: 003d429f3b8620245ab9744a00e370b6, type: 3}
       propertyPath: m_RootOrder
       value: 0

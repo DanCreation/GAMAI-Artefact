@@ -14,9 +14,17 @@ public class State_Patrol : AIBaseState
     }
 
     // Update is called once per frame
-    public override void UpdateState(StateManager AI, NavMeshAgent agent, GameObject[] destinations, Vector3 playerPosition, bool seePlayer)
+    public override void UpdateState(StateManager AI, NavMeshAgent agent, GameObject[] destinations, Vector3 playerPosition,  Vector3 soundPosition, bool seePlayer, bool heardPlayer)
     {
-        if(seePlayer == false)
+        if(seePlayer == true)
+        {
+            AI.SwitchState(AI.attackState);
+        }
+        if(heardPlayer == true)
+        {
+            AI.SwitchState(AI.investigateState);
+        }
+        else
         {
             for (int i = 0; i < destinations.Length; i++)
             {
@@ -31,10 +39,6 @@ public class State_Patrol : AIBaseState
                     }
                 }
             }
-        }
-        else
-        {
-            AI.SwitchState(AI.attackState);
         }
     }
 

@@ -8,12 +8,13 @@ public class StateManager : MonoBehaviour
     AIBaseState currentState;
     public State_Patrol patrolState = new State_Patrol();
     public AttackState attackState = new AttackState();
-
+    public InvestigateState investigateState = new InvestigateState();
     public GameObject enemy;
     
     public NavMeshAgent agent;
     public GameObject[] destinations;
     Vector3 playerPosition;
+    Vector3 soundPosition;
 
     // Start is called before the first frame update
     public void Start()
@@ -35,7 +36,8 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        currentState.UpdateState(this, agent, destinations, playerPosition, enemy.GetComponent<FieldOfView>().seePlayer);
+        soundPosition = enemy.GetComponent<FieldOfHearing>().playerPosition;
+        currentState.UpdateState(this, agent, destinations, playerPosition, soundPosition, enemy.GetComponent<FieldOfView>().seePlayer, enemy.GetComponent<FieldOfHearing>().heardPlayer);
     }
 
     public void SwitchState(AIBaseState state)

@@ -12,7 +12,7 @@ public class AttackState : AIBaseState
     }
 
     //Update is called once per frame
-    public override void UpdateState(StateManager AI, NavMeshAgent agent, GameObject[] destinations, Vector3 playerPosition, bool seePlayer)
+    public override void UpdateState(StateManager AI, NavMeshAgent agent, GameObject[] destinations, Vector3 playerPosition, Vector3 soundPosition, bool seePlayer, bool heardPlayer)
     {
         agent.SetDestination(playerPosition);
     }
